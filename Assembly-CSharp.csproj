@@ -52,7 +52,16 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.6.0f1\Editor\Data\BCLExtensions\TargetingPacks\netstandard2.1\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Core\UI\UIFontWeight.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\PrimaryButton.cs" />
     <Compile Include="Assets\TutorialInfo\Readme.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\UIThemeBinder.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\CloseButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\AuthModal.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\UICheckbox.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\UIGradient.cs" />
+    <Compile Include="Assets\Scripts\UI\Components\LabeledInputField.cs" />
+    <Compile Include="Assets\Scripts\Core\UI\UITheme.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditor.uss" />
