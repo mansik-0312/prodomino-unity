@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="selfhst:facebook" clip-path="url(#clip0_0_41)">
+<path id="Vector" d="M8.35156 19.8984C3.60156 19.0508 0 14.9492 0 10C0 4.5 4.5 0 10 0C15.5 0 20 4.5 20 10C20 14.9492 16.3984 19.0508 11.6484 19.8984L11.0977 19.4492H8.89844L8.35156 19.8984Z" fill="#0866FF"/>
+<path id="Vector_2" d="M13.8984 12.8008L14.3477 10H11.6992V8.05078C11.6992 7.25 12 6.65234 13.1992 6.65234H14.5V4.10156C13.8008 4 13 3.90234 12.3008 3.90234C10 3.90234 8.40234 5.30078 8.40234 7.80078V10H5.90234V12.8008H8.40234V19.8516C8.95313 19.9531 9.50391 20 10.0508 20C10.6016 20 11.1523 19.9492 11.6992 19.8516V12.8008H13.8984Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_0_41">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
