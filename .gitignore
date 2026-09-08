@@ -21,3 +21,19 @@ sysinfo.txt
 
 # Crash reports
 crash-reports/
+
+# Unity generated files
+[Ll]ibrary/
+[Ll]ibrary_backup_*/
+[Tt]emp/
+[Ll]ogs/
+[Oo]bj/
+
+# IDE generated files
+*.csproj
+*.sln
+*.slnx
+
+# Local verification/debug logs
+verify*.log
+*.log
