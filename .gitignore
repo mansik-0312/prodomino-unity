@@ -39,3 +39,6 @@ verify*.log
 *.log
 
 verify.log
+
+Assets/_Recovery/
+Assets/_Recovery.meta
