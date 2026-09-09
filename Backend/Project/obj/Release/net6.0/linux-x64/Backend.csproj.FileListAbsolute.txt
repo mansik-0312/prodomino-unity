@@ -1,0 +1,13 @@
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\bin\Release\net6.0\linux-x64\Backend.deps.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\bin\Release\net6.0\linux-x64\Backend.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\bin\Release\net6.0\linux-x64\Backend.pdb
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.csproj.AssemblyReference.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.AssemblyInfoInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.AssemblyInfo.cs
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.csproj.CoreCompileInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.sourcelink.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\refint\Backend.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\Backend.pdb
+E:\Proyectos Unity\Timba\ProDomino\Backend\Project\obj\Release\net6.0\linux-x64\ref\Backend.dll

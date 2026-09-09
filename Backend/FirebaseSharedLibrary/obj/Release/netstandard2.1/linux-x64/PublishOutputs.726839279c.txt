@@ -1,0 +1,4 @@
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\FirebaseSharedLibrary.dll
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\FirebaseSharedLibrary.deps.json
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\FirebaseSharedLibrary.pdb
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\Newtonsoft.Json.dll

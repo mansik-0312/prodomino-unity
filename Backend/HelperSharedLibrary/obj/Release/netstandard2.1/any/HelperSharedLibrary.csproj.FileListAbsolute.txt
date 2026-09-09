@@ -1,0 +1,11 @@
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\bin\Release\netstandard2.1\any\HelperSharedLibrary.deps.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\bin\Release\netstandard2.1\any\HelperSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\bin\Release\netstandard2.1\any\HelperSharedLibrary.pdb
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.csproj.AssemblyReference.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.AssemblyInfoInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.AssemblyInfo.cs
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.csproj.CoreCompileInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.sourcelink.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\HelperSharedLibrary\obj\Release\netstandard2.1\any\HelperSharedLibrary.pdb

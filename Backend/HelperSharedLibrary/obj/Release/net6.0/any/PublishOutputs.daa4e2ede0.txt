@@ -1,0 +1,3 @@
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation-cross-platform\HelperSharedLibrary.dll
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation-cross-platform\HelperSharedLibrary.deps.json
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation-cross-platform\HelperSharedLibrary.pdb

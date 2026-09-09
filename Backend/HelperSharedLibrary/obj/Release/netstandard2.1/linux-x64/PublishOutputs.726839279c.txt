@@ -1,0 +1,4 @@
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\HelperSharedLibrary.dll
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\HelperSharedLibrary.deps.json
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\HelperSharedLibrary.pdb
+C:\Users\andre\AppData\Local\Temp\Backend\module-compilation\Newtonsoft.Json.dll

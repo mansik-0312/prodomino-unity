@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DKu+EmsMTRc=",
+  "success": true,
+  "projectFilePath": "E:\\Proyectos Unity\\Timba\\ProDomino\\Backend\\HelperSharedLibrary\\HelperSharedLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

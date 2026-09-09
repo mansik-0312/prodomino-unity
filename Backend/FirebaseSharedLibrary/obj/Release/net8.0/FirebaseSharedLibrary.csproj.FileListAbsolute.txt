@@ -1,0 +1,13 @@
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\bin\Release\net8.0\FirebaseSharedLibrary.deps.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\bin\Release\net8.0\FirebaseSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\bin\Release\net8.0\FirebaseSharedLibrary.pdb
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.AssemblyInfoInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.AssemblyInfo.cs
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.csproj.CoreCompileInputs.cache
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.sourcelink.json
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\refint\FirebaseSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.pdb
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\ref\FirebaseSharedLibrary.dll
+E:\Proyectos Unity\Timba\ProDomino\Backend\FirebaseSharedLibrary\obj\Release\net8.0\FirebaseSharedLibrary.csproj.AssemblyReference.cache
