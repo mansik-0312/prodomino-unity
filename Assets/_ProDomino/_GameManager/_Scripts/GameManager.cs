@@ -91,6 +91,7 @@ namespace ProDomino.GameSystem
 
         protected override async void Awake()
         {
+            Debug.Log($"[StartupDiag] GameManager.Awake start on '{gameObject.name}' (scene='{gameObject.scene.path}')");
             base.Awake();
 
             onSignedIn = new();
@@ -120,7 +121,9 @@ namespace ProDomino.GameSystem
 
             // Wait until the authentication manager is initialized due ugs needs to be initialized before we can access the backend bindings
             // The secuence is: GameManager.Awake -> AuthManager.Awake (initialize UGS) -> GameManager.Awake (continue) -> AuthManager Cached Login
+            Debug.Log($"[StartupDiag] GameManager waiting for AuthManager. found={(authManager != null)} initialized={authManager?.IsAlreadyInitialized}");
             await UniTask.WaitUntil(() => authManager is not null and { IsAlreadyInitialized: true });
+            Debug.Log("[StartupDiag] GameManager AuthManager initialized, continuing startup.");
 
             // Subscribe to the sign-in event to refresh all data when the player signs in
             authManager?.HandleOnSignIn(OnSignInProxy);

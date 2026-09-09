@@ -143,12 +143,15 @@ namespace ProDomino.Authentication
 
         protected async override void Awake()
         {
+            Debug.Log($"[StartupDiag] AuthManager.Awake start on '{gameObject.name}' (scene='{gameObject.scene.path}')");
             base.Awake();
 
             handleProcessesController = ServiceLocator.Instance.GetService<HandleProcessesController>();
+            Debug.Log($"[StartupDiag] AuthManager resolved HandleProcessesController={(handleProcessesController != null)}. Initializing Unity Services...");
 
             // First, try to initialize Unity services
             await HandleProcess_AuthManagerProxy(TryToInitializeUnityServices, nameof(TryToInitializeUnityServices));
+            Debug.Log($"[StartupDiag] AuthManager Unity Services init finished. IsAlreadyInitialized={IsAlreadyInitialized}");
 
             // Wait until the game manager has finished its Awake process
             // The secuence is: GameManager.Awake -> AuthManager.Awake (initialize UGS) -> GameManager.Awake (continue) -> AuthManager Cached Login

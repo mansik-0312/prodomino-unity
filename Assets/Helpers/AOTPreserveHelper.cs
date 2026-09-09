@@ -8,9 +8,10 @@
 // This is safe in editor and at runtime (IL2CPP / Mono).
 
 using System;
-using UnityEngine;
 using Newtonsoft.Json;
 using HelperSharedLibrary;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class AOTPreserveHelper
 {
@@ -200,6 +201,29 @@ public static class AOTPreserveHelper
         catch (Exception ex)
         {
             Debug.LogError($"[AOTPreserveHelper] Error preserving types: {ex}");
+        }
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    private static void DiagnoseStartupScene()
+    {
+        var scene = SceneManager.GetActiveScene();
+        var cameras = UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var canvases = UnityEngine.Object.FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+
+        Debug.Log($"[StartupDiag] AfterSceneLoad scene='{scene.path}' name='{scene.name}' loaded={scene.isLoaded} cameras={cameras.Length} canvases={canvases.Length}");
+
+        foreach (var cam in cameras)
+        {
+            Debug.Log($"[StartupDiag] Camera '{cam.name}' enabled={cam.enabled} active={cam.gameObject.activeInHierarchy} pos={cam.transform.position} clearFlags={cam.clearFlags}");
+        }
+
+        if (string.IsNullOrEmpty(scene.path) || cameras.Length == 0)
+        {
+            Debug.LogError(
+                "[StartupDiag] Play Mode loaded an untitled/empty scene or a scene with no camera. " +
+                "Game view will be black. Open 'Assets/_tests/TemporalTestDemoMultiplayer/Scene/MainSceneDomDemo.unity' " +
+                "or use the first enabled Build Settings scene.");
         }
     }
 }
