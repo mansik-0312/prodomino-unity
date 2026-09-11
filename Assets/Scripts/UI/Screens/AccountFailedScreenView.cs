@@ -17,7 +17,10 @@ namespace ProDomino.UI.Screens
                 return;
             }
 
-            var config = StatusResultConfig.AccountCreatedFailed(OnTryAgainClicked, OnGoToLoginClicked);
+            var config = StatusResultConfig.AccountCreatedFailed(
+                OnTryAgainClicked,
+                OnGoToLoginClicked,
+                OnboardingNavigator.PendingSignUpError);
             var canvas = AuthScreenLayout.EnsureCanvas();
             AuthScreenLayout.BuildBackground(canvas.transform, theme);
             AuthScreenLayout.BuildAuthModal(
@@ -28,7 +31,7 @@ namespace ProDomino.UI.Screens
                 contentRoot => StatusResultModal.BuildContent(contentRoot, theme, config));
         }
 
-        private void OnCloseClicked() => Debug.Log("Account failed: Close clicked (stub).");
+        private void OnCloseClicked() => OnboardingNavigator.ShowLogin();
         private void OnTryAgainClicked() => OnboardingNavigator.ShowRegistration();
         private void OnGoToLoginClicked() => OnboardingNavigator.ShowLogin();
     }

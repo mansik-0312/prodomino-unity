@@ -1,3 +1,4 @@
+using ProDomino.Authentication;
 using UnityEngine;
 
 namespace ProDomino.UI.Screens
@@ -5,6 +6,7 @@ namespace ProDomino.UI.Screens
     public static class OnboardingNavigator
     {
         public static string PendingOtpEmail { get; private set; }
+        public static string PendingSignUpError { get; private set; }
 
         public static void ShowLogin()
         {
@@ -14,18 +16,21 @@ namespace ProDomino.UI.Screens
 
         public static void ShowRegistration()
         {
+            PendingSignUpError = null;
             DestroyOnboardingScreens();
             new GameObject("RegistrationScreen").AddComponent<RegistrationScreenView>();
         }
 
         public static void ShowAccountCreated()
         {
+            PendingSignUpError = null;
             DestroyOnboardingScreens();
             new GameObject("AccountCreatedScreen").AddComponent<AccountCreatedScreenView>();
         }
 
-        public static void ShowAccountFailed()
+        public static void ShowAccountFailed(string errorMessage = null)
         {
+            PendingSignUpError = AuthManager.ToDisplayError(errorMessage);
             DestroyOnboardingScreens();
             new GameObject("AccountFailedScreen").AddComponent<AccountFailedScreenView>();
         }
@@ -56,6 +61,17 @@ namespace ProDomino.UI.Screens
         }
 
         public static void ClearPendingOtpEmail() => PendingOtpEmail = null;
+
+        public static void DismissOnboarding()
+        {
+            PendingSignUpError = null;
+            PendingOtpEmail = null;
+            DestroyOnboardingScreens();
+
+            var loginCanvas = GameObject.Find("LoginCanvas");
+            if (loginCanvas != null)
+                Object.Destroy(loginCanvas);
+        }
 
         private static void DestroyOnboardingScreens()
         {

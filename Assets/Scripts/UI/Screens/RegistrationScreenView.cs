@@ -1,3 +1,6 @@
+using System;
+using HelperSharedLibrary;
+using ProDomino.Authentication;
 using ProDomino.Core.UI;
 using ProDomino.UI.Components;
 using TMPro;
@@ -9,12 +12,19 @@ namespace ProDomino.UI.Screens
     public class RegistrationScreenView : MonoBehaviour
     {
         private const float ModalHeight = 984f;
+        private const string CreateAccountLabel = "Create Account";
+        private const string CreatingAccountLabel = "Creating...";
 
         private UITheme theme;
+        private LabeledInputField emailField;
         private LabeledInputField passwordField;
         private LabeledInputField confirmPasswordField;
+        private UICheckbox termsCheckbox;
+        private UICheckbox dataTreatmentCheckbox;
+        private PrimaryButton registerButton;
         private bool passwordVisible;
         private bool confirmPasswordVisible;
+        private bool isSubmitting;
 
         private void Awake()
         {
@@ -28,6 +38,7 @@ namespace ProDomino.UI.Screens
             var canvas = AuthScreenLayout.EnsureCanvas();
             AuthScreenLayout.BuildBackground(canvas.transform, theme);
             AuthScreenLayout.BuildAuthModal(canvas.transform, theme, ModalHeight, OnCloseClicked, BuildContent);
+            RefreshSubmitState();
         }
 
         private void BuildContent(RectTransform contentRoot)
@@ -48,15 +59,18 @@ namespace ProDomino.UI.Screens
             var form = AuthScreenLayout.CreateLayoutGroup("Form", parent, true, 24f);
             form.GetComponent<LayoutElement>().flexibleWidth = 1f;
 
-            AuthScreenLayout.InstantiateInputField(form.transform, "Email", "Enter your email", TMP_InputField.ContentType.EmailAddress);
+            emailField = AuthScreenLayout.InstantiateInputField(form.transform, "Email", "Enter your email", TMP_InputField.ContentType.EmailAddress);
+            BindField(emailField);
 
             passwordField = AuthScreenLayout.InstantiateInputField(form.transform, "Password", "Enter Password", TMP_InputField.ContentType.Password);
             if (passwordField != null)
                 AuthScreenLayout.SetupPasswordToggle(passwordField, theme, () => AuthScreenLayout.TogglePasswordVisibility(passwordField, ref passwordVisible));
+            BindField(passwordField);
 
             confirmPasswordField = AuthScreenLayout.InstantiateInputField(form.transform, "Confirm Password", "Enter Password", TMP_InputField.ContentType.Password);
             if (confirmPasswordField != null)
                 AuthScreenLayout.SetupPasswordToggle(confirmPasswordField, theme, () => AuthScreenLayout.TogglePasswordVisibility(confirmPasswordField, ref confirmPasswordVisible));
+            BindField(confirmPasswordField);
 
             BuildLegalCheckboxes(form.transform);
         }
@@ -68,10 +82,14 @@ namespace ProDomino.UI.Screens
                 return;
 
             var termsGo = Instantiate(checkboxPrefab, parent);
-            termsGo.GetComponent<UICheckbox>().LabelText = "I agree to the Terms & Conditions of ProDomino";
+            termsCheckbox = termsGo.GetComponent<UICheckbox>();
+            termsCheckbox.LabelText = "I agree to the Terms & Conditions of ProDomino";
+            termsCheckbox.AddListener(_ => RefreshSubmitState());
 
             var dataGo = Instantiate(checkboxPrefab, parent);
-            dataGo.GetComponent<UICheckbox>().LabelText = "I agree to the ProDomino Data Treatment";
+            dataTreatmentCheckbox = dataGo.GetComponent<UICheckbox>();
+            dataTreatmentCheckbox.LabelText = "I agree to the ProDomino Data Treatment";
+            dataTreatmentCheckbox.AddListener(_ => RefreshSubmitState());
         }
 
         private void BuildActions(Transform parent)
@@ -84,8 +102,9 @@ namespace ProDomino.UI.Screens
                 return;
 
             var registerGo = Instantiate(buttonPrefab, actions.transform);
-            var registerButton = registerGo.GetComponent<PrimaryButton>();
-            registerButton.LabelText = "Create Account";
+            registerButton = registerGo.GetComponent<PrimaryButton>();
+            registerButton.LabelText = CreateAccountLabel;
+            registerButton.Interactable = false;
             registerButton.AddListener(OnRegisterClicked);
         }
 
@@ -108,8 +127,69 @@ namespace ProDomino.UI.Screens
             AuthScreenLayout.CreateLinkButton("LoginLink", footer, theme, "Login", OnLoginClicked);
         }
 
-        private void OnCloseClicked() => Debug.Log("Registration: Close clicked (stub).");
-        private void OnRegisterClicked() => OnboardingNavigator.ShowAccountCreated();
+        private void BindField(LabeledInputField field)
+        {
+            if (field?.Input == null)
+                return;
+
+            field.Input.onValueChanged.AddListener(_ => RefreshSubmitState());
+        }
+
+        private void RefreshSubmitState()
+        {
+            if (registerButton == null || isSubmitting)
+                return;
+
+            registerButton.Interactable = IsFormValid();
+        }
+
+        private bool IsFormValid()
+        {
+            return CredentialsValidator.IsValidToSignUp(
+                emailField?.Text?.Trim(),
+                passwordField?.Text,
+                confirmPasswordField?.Text,
+                termsCheckbox != null && termsCheckbox.IsOn,
+                dataTreatmentCheckbox != null && dataTreatmentCheckbox.IsOn);
+        }
+
+        private void OnCloseClicked() => OnboardingNavigator.ShowLogin();
+
+        private async void OnRegisterClicked()
+        {
+            if (isSubmitting || !IsFormValid())
+                return;
+
+            isSubmitting = true;
+            if (registerButton != null)
+            {
+                registerButton.Interactable = false;
+                registerButton.LabelText = CreatingAccountLabel;
+            }
+
+            var email = emailField.Text.Trim();
+            var password = passwordField.Text;
+            var username = CredentialsValidator.DeriveUsernameFromEmail(email);
+
+            try
+            {
+                var result = await AuthManager.SignUpWithCredentialsAsync(username, email, password);
+                if (this == null)
+                    return;
+
+                if (result.Success)
+                    OnboardingNavigator.ShowAccountCreated();
+                else
+                    OnboardingNavigator.ShowAccountFailed(result.ErrorMessage);
+            }
+            catch (Exception exception)
+            {
+                Debug.LogWarning($"Registration submit failed: {exception.Message}");
+                if (this != null)
+                    OnboardingNavigator.ShowAccountFailed(exception.Message);
+            }
+        }
+
         private void OnLoginClicked() => OnboardingNavigator.ShowLogin();
     }
 }

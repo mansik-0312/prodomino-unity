@@ -109,15 +109,14 @@ namespace ProDomino.UI.Components
             System.Action<RectTransform> buildContent)
         {
             var host = CreateRect("ModalHost", parent);
-            host.anchorMin = new Vector2(0.5f, 0.5f);
-            host.anchorMax = new Vector2(0.5f, 0.5f);
-            host.pivot = new Vector2(0.5f, 0.5f);
-            host.sizeDelta = new Vector2(ModalWidth, modalHeight);
+            host.gameObject.SetActive(false);
+            var responsive = host.gameObject.AddComponent<AuthResponsiveLayout>();
 
             var authModalPrefab = LoadAsset<GameObject>(AuthModalPrefabPath);
             if (authModalPrefab == null)
             {
                 Debug.LogError("AuthScreenLayout: AuthModal prefab not found.");
+                Object.Destroy(host.gameObject);
                 return null;
             }
 
@@ -126,6 +125,7 @@ namespace ProDomino.UI.Components
             if (authModal == null)
             {
                 Debug.LogError("AuthScreenLayout: AuthModal component missing on prefab.");
+                Object.Destroy(host.gameObject);
                 return null;
             }
 
@@ -133,9 +133,12 @@ namespace ProDomino.UI.Components
             AddModalBorder(modalInstance, theme);
             AddDominoPattern(modalInstance.transform);
             authModal.CloseButton?.AddListener(onClose);
+            authModal.EnsureScrollableContent();
 
             PrepareContentRoot(authModal.ContentRoot);
             buildContent?.Invoke(authModal.ContentRoot);
+            responsive.Configure(ModalWidth, modalHeight, theme);
+            host.gameObject.SetActive(true);
 
             return authModal;
         }
@@ -160,7 +163,7 @@ namespace ProDomino.UI.Components
         {
             var header = CreateLayoutGroup("Header", parent, true, 16f);
             var headerLayout = header.GetComponent<LayoutElement>();
-            headerLayout.preferredWidth = ContentWidth;
+            headerLayout.preferredWidth = 0f;
             headerLayout.flexibleWidth = 1f;
 
             var logoSprite = LoadSprite(LogoPath);
@@ -170,7 +173,8 @@ namespace ProDomino.UI.Components
                 var logoLayout = logo.gameObject.AddComponent<LayoutElement>();
                 logoLayout.preferredWidth = 320f;
                 logoLayout.preferredHeight = 40f;
-                logoLayout.flexibleWidth = 0f;
+                logoLayout.minWidth = 160f;
+                logoLayout.flexibleWidth = 1f;
                 logo.sprite = logoSprite;
                 logo.preserveAspect = true;
                 logo.raycastTarget = false;
@@ -385,6 +389,9 @@ namespace ProDomino.UI.Components
             image.preserveAspect = true;
             image.color = new Color(1f, 1f, 1f, 0.29f);
             image.raycastTarget = false;
+
+            var ignore = patternGo.AddComponent<LayoutElement>();
+            ignore.ignoreLayout = true;
         }
     }
 }

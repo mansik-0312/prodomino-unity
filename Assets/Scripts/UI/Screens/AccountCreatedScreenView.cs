@@ -28,8 +28,8 @@ namespace ProDomino.UI.Screens
                 contentRoot => StatusResultModal.BuildContent(contentRoot, theme, config));
         }
 
-        private void OnCloseClicked() => Debug.Log("Account created: Close clicked (stub).");
-        private void OnContinueClicked() => Debug.Log("Account created: Continue clicked (stub).");
+        private void OnCloseClicked() => OnboardingNavigator.DismissOnboarding();
+        private void OnContinueClicked() => OnboardingNavigator.DismissOnboarding();
         private void OnGoToLoginClicked() => OnboardingNavigator.ShowLogin();
     }
 }

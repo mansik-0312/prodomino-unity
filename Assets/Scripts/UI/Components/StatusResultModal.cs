@@ -48,13 +48,15 @@ namespace ProDomino.UI.Components
             };
         }
 
-        public static StatusResultConfig AccountCreatedFailed(UnityAction onTryAgain, UnityAction onGoToLogin)
+        public static StatusResultConfig AccountCreatedFailed(UnityAction onTryAgain, UnityAction onGoToLogin, string body = null)
         {
             return new StatusResultConfig
             {
                 Variant = StatusResultVariant.Error,
                 Title = "Account Creation Failed",
-                Body = "Something went wrong while creating your account. Please try again.",
+                Body = string.IsNullOrWhiteSpace(body)
+                    ? "Something went wrong while creating your account. Please try again."
+                    : body,
                 PrimaryAction = new StatusResultAction("Try Again", onTryAgain),
                 SecondaryAction = new StatusResultAction("Go to Login", onGoToLogin, false)
             };
@@ -204,7 +206,7 @@ namespace ProDomino.UI.Components
                 {
                     var layout = go.GetComponent<LayoutElement>();
                     layout.flexibleWidth = 1f;
-                    layout.minWidth = 240f;
+                    layout.minWidth = 120f;
                 }
 
                 return;
@@ -219,9 +221,9 @@ namespace ProDomino.UI.Components
             var layoutElement = secondaryGo.GetComponent<LayoutElement>();
             layoutElement.minHeight = theme.primaryButtonHeight;
             layoutElement.preferredHeight = theme.primaryButtonHeight;
-            layoutElement.flexibleWidth = halfWidth ? 1f : 1f;
+            layoutElement.flexibleWidth = 1f;
             if (halfWidth)
-                layoutElement.minWidth = 240f;
+                layoutElement.minWidth = 120f;
 
             var labelGo = new GameObject("Label", typeof(RectTransform), typeof(CanvasRenderer), typeof(TextMeshProUGUI));
             labelGo.transform.SetParent(secondaryGo.transform, false);
